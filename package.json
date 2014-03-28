@@ -1,0 +1,23 @@
+{
+  "name": "node-mongodb-rest",
+  "version": "0.0.1",
+  "description": "node-mongodb-rest =================",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattpardee/node-mongodb-rest.git"
+  },
+  "author": "Matt Pardee <matt.pardee@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattpardee/node-mongodb-rest/issues"
+  },
+  "homepage": "https://github.com/mattpardee/node-mongodb-rest",
+  "dependencies": {
+    "mongoose": "^3.8.8",
+    "restify": "^2.7.0"
+  }
+}
