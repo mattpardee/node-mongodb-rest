@@ -1,7 +1,7 @@
-var restify = require('restify'),
+var restify  = require('restify'),
 	mongoose = require('mongoose'),
-	schemas = require('./lib/schemas'),
-	config = require('./config.js');
+	schemas  = require('./lib/schemas'),
+	config   = require('./config.js');
 
 /**
  * Set up mongoose
@@ -42,15 +42,23 @@ server.get('/:collection', function(req, res, next) {
  * GET single record
  */
 server.get('/:collection/:id', function(req, res, next) {
-	res.send(req.params.collection + ' ' + req.params.id);
-	next();
+	var collection = req.params.collection;
+	if (!schemas[collection]) {
+		return next();
+	}
+
+	schemas[collection].findOne({
+		_id: req.params.id
+	}, function(err, obj) {
+		res.send(obj);
+		next();
+	});
 });
 
 /**
  * POST to collection
  */
 server.post('/:collection', function(req, res, next) {
-
 	var collection = req.params.collection;
 	if (!schemas[collection]) {
 		return next();
