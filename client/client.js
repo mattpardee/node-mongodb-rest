@@ -20,26 +20,37 @@ var schema = {
 	}
 };
 
-var Restino = function() {
+var RestClient = function() {
+	var Restino = function(route, parent_cb) {
+		function ajax(options, cb) {
+			$.ajax({
+				url: route,
+				data: options.data,
+				type: options.type
+			}).done(cb);
+		};
 
-	var restOperations = {
-		get: function() {
+		return {
+			get: function(data) {
+				ajax({ type: 'GET', data: data }, parent_cb);
+			},
 
-		},
-
-		post: function(data) {
-
-		}
+			post: function(data) {
+				ajax({ type: 'POST', data: data }, parent_cb);
+			}
+		};
 	}
 
-	var restObjects = {};
+	var restObjects = {},
+		restino;
 
 	for (var s in schema) {
+		restino = new Restino('/' + s);
 		restObjects[s] = {
 			schema : schema[s]
 		}
 
-		$.extend(restObjects[s], restOperations);
+		$.extend(restObjects[s], restino);
 	}
 
 	return restObjects;
