@@ -1,24 +1,11 @@
 /**
  * Restino REST library
  * 
- * @depends on jQuery
+ * @requires jQuery
+ * @requires requirejs
  */
 
-var schema = {
-	users: {
-	    "name" : {
-	    	type: 'String'
-	    },
-	    "email" : {
-	    	type: 'String',
-	    	unique: true
-	    },
-	    "updated" : {
-	    	type: 'Date',
-	    	default: Date.now
-	    }
-	}
-};
+var schema = require('../client/client.js');
 
 var RestClient = function() {
 	var Restino = function(route, parent_cb) {

@@ -2,7 +2,7 @@
   "name": "node-mongodb-rest",
   "version": "0.0.1",
   "description": "node-mongodb-rest =================",
-  "main": "app.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,9 @@
   "homepage": "https://github.com/mattpardee/node-mongodb-rest",
   "dependencies": {
     "mongoose": "^3.8.8",
-    "restify": "^2.7.0"
+    "restify": "^2.7.0",
+    "grunt": "^0.4.4",
+    "browserify": "^3.38.0",
+    "grunt-browserify": "^2.0.1"
   }
 }

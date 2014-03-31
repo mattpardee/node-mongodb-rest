@@ -4,10 +4,10 @@
 
 module.exports = {
 	users: {
-	    "name"    : {
+	    "name" : {
 	    	type: 'String'
 	    },
-	    "email"   : {
+	    "email" : {
 	    	type: 'String',
 	    	unique: true
 	    },

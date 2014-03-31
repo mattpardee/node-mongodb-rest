@@ -1,7 +1,7 @@
 var restify  = require('restify'),
 	mongoose = require('mongoose'),
 	schemas  = require('./lib/schemas'),
-	config   = require('./config.js');
+	config   = require('./configs/development.js');
 
 /**
  * Set up mongoose
@@ -20,6 +20,16 @@ var server = restify.createServer();
 
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser());
+
+if (config.CORS) {
+	server.use(
+		function crossOrigin(req,res,next){
+			res.header("Access-Control-Allow-Origin", "*");
+			res.header("Access-Control-Allow-Headers", "X-Requested-With");
+			return next();
+		}
+	);
+}
 
 /**
  * GET (list) all

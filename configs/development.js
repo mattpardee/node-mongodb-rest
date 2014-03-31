@@ -1,4 +1,6 @@
 module.exports = {
+	"CORS": true,
+
 	"db" : {
 		"mongo": {
 			"host": "localhost",
